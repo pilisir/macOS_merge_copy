@@ -3,7 +3,7 @@
 Leave away drag and drop with [option] key and say Goodbye to the "Replace".
 Do Real Merge with simple services on macOS Finder.
 
-[中文版](https://github.com/pilisir/macOS_merge_copy/wiki/%E4%B8%AD%E6%96%87%E7%89%88)
+[中文版](https://github.com/pilisir/macOS_merge_copy/wiki/%E4%B8%AD%E6%96%87%E7%89%88-README)
 
 ## Feature
 * Copy selected files or folders to a target folder and append as children if not existing or overwrite otherwise. 
@@ -42,8 +42,8 @@ There are two way to create the services.
 MIT License
 
 ## Reference
-* (https://grahamrpugh.com/2017/01/07/application-to-run-shell-commands-with-admin-rights.html)
-* (https://stackoverflow.com/questions/39932522/applescript-how-to-get-full-path-of-the-current-finder-window-open)
+* https://grahamrpugh.com/2017/01/07/application-to-run-shell-commands-with-admin-rights.html
+* https://stackoverflow.com/questions/39932522/applescript-how-to-get-full-path-of-the-current-finder-window-open
 
 ## Donate
 [Donate me via PayPal](https://www.paypal.me/pilisir/0.99usd)\
