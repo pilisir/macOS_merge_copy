@@ -11,7 +11,7 @@ Do Real Merge with simple services on macOS Finder.
 There are two way to create the services.
 ##### Way 1: Copy and Paste
 1. Directly download this project and uncompress it.
-2. Move the service file to the local service folder. You can easily move directory __*Library*__ under __*./dist/*__ of this project to your local __*$USER*__ directory.  (Please set your Finder eanble to see hidden directories via shortcut key **[Shift] + [Command] + [.]**  first.)
+2. Move the service file to the local service folder. You can easily copy *merge copy.workflow* under directory __*./dist/Library/Services/*__ of this project to your local __*$USER/Library/Services/*__ directory.  (Please set your Finder eanble to see hidden directories via shortcut key **[Shift] + [Command] + [.]**  first.)
 3. Done !
 ##### Way 2: Create services yourself.
 1. Open **Automator** app.
