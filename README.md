@@ -25,8 +25,10 @@ There are two way to create the services.
 9. Done !
 
 ## Usage
-1. Select files or directories in Finder, open conetxt menu and select Service > **ZIP** (or **ZIP with path**).
-2. That's all !
+1. Select files or directories in Finder, open conetxt menu and select Service > **Merge Copy**.
+2. Select target folder from second Finder dialog.
+3. Provide password if files or folders require premissions.
+4. That's all !
 ![context menu](https://github.com/pilisir/macOS_merge_copy/blob/master/doc/image/contextmenu.png)
 
 ## Recommend Setting Hot Key
