@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>444.42</string>
+	<key>AMApplicationVersion</key>
+	<string>2.9</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.1.1</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict/>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Selected Finder Items 2.action</string>
+				<key>ActionName</key>
+				<string>取得所選的 Finder 項目</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.GetSelectedFinderItems2</string>
+				<key>CFBundleVersion</key>
+				<string>2.1.1</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryFilesAndFolders</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMGetSelectedFinderItemsAction</string>
+				<key>InputUUID</key>
+				<string>D8E5F645-DE92-45A1-8C2B-FC4D38589FD3</string>
+				<key>Keywords</key>
+				<array/>
+				<key>OutputUUID</key>
+				<string>DB1A4A8C-A1AB-4A9E-ACF1-C1198926DD74</string>
+				<key>UUID</key>
+				<string>B917FF92-361F-44B8-A545-EF0FD10F1E7B</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+			</dict>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>執行 Shell 工序指令</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string># Version 1.0
+# Copyright (c) 2019 pilisir.tw@gmail.com
+# Under MIT Licesne, please go to "https://en.wikipedia.org/wiki/MIT_License" to check license terms.
+
+set +H
+itemsPathArray=()
+lastItemPath=""
+eachItemPathEscape=""
+
+escapePath() {
+	resultValue=$(echo "$@" | sed 's@[\]@\\\\@g;s/"/\\"/g;s/\ /\\ /g;s/'"'"'/\'"\'"'/g;s/`/\\`/g;s/:/\\:/g;s/?/\\?/g;s/!/\\!/g;s/&lt;/\\&lt;/g;s/&gt;/\\&gt;/g;s/|/\\|/g;s/*/\\*/g;s/(/\\(/g;s/)/\\)/g;s/\[/\\[/g;s/\]/\\]/g;s/{/\\{/g;s/}/\\}/g;s/&amp;/\\&amp;/g;s/%/\\%/g;s/\$/\\$/g;s/#/\\#/g;s/~/\\~/g;s/=/\\=/g;s/,/\\,/g;s@[;]@\\;@g;')
+	echo $resultValue
+}
+
+targetFolder=$(osascript &lt;&lt;EOF
+	tell application "Finder"
+		activate
+	    if exists Finder window 1 then
+	        set currentDir to target of Finder window 1 as alias
+	    else
+	        set currentDir to desktop as alias
+	    end if
+	end tell
+	tell application "System Events"
+    	activate
+		POSIX path of (choose folder with prompt "Please choose the folder of target:" ¬
+	    	default location currentDir)
+	end tell 	
+EOF
+)
+
+if [ -z $targetFolder ]; then
+	exit
+fi
+
+if [[ ${targetFolder: -1} == "/" &amp;&amp; ${targetFolder} != "/" ]]; then
+	targetFolder=\""${targetFolder%?}"\"
+fi
+
+for eachItemPath in "$@"
+do
+	if [[ $targetFolder == *"$eachItemPath"* || $targetFolder == "${eachItemPath%/*}" ]]; then
+		exit
+	fi
+	eachItemPathEscape=$(escapePath $eachItemPath)
+	itemsPathArray+=($eachItemPathEscape)
+done
+
+eachItemPathEscape=$(escapePath $targetFolder)
+itemsPathArray+=($eachItemPathEscape)
+
+{ 
+	cmd="cp -R ${itemsPathArray[@]}"
+	eval $cmd &amp;&amp; echo OK
+} || {
+	# Dialog Title
+	dialogTitle="Require password"
+
+	# obtain the password from a dialog box
+	authPass=$(osascript &lt;&lt;EOT
+	tell application "System Events"
+	    activate
+	    repeat
+	        display dialog "Action requires administrator privileges.\r\nPassword:" ¬
+	            default answer "" ¬
+	            with title "$dialogTitle" ¬
+	            with hidden answer ¬
+	            buttons {"Cancel", "Ok"} default button 2
+	        if button returned of the result is "Cancel" then
+	            return 1
+	            exit repeat
+	        else if the button returned of the result is "Ok" then
+	            set pswd to text returned of the result
+	            set usr to short user name of (system info)
+	            try
+	                do shell script "echo test" user name usr password pswd with administrator privileges
+	                return pswd
+	                exit repeat
+	            end try
+	        end if
+	        end repeat
+	        end tell
+	EOT
+	)
+
+	# Abort if the Quit button was pressed
+	if [ "$authPass" == 1 ]; then
+	    echo "User Canceled. Exit"
+	    exit 0
+	fi
+
+	cmd="echo $authPass | sudo -S cp -a ${itemsPathArray[@]}"
+	eval $cmd
+}</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>1</integer>
+					<key>shell</key>
+					<string>/bin/bash</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>InputUUID</key>
+				<string>EA29AD5C-87D2-42B6-8D70-09644D4DFC13</string>
+				<key>Keywords</key>
+				<array>
+					<string>Shell</string>
+					<string>工序指令</string>
+					<string>指令</string>
+					<string>執行</string>
+					<string>Unix</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>B5CFB39C-A855-470A-BF02-D7D686E58189</string>
+				<key>UUID</key>
+				<string>ECA32A2B-EB21-4247-A25A-9825A8D46E2A</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>452.750000:370.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>62415F9C-FE6C-4FE2-8089-50C74E71424E</key>
+		<dict>
+			<key>from</key>
+			<string>B917FF92-361F-44B8-A545-EF0FD10F1E7B - B917FF92-361F-44B8-A545-EF0FD10F1E7B</string>
+			<key>to</key>
+			<string>ECA32A2B-EB21-4247-A25A-9825A8D46E2A - ECA32A2B-EB21-4247-A25A-9825A8D46E2A</string>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<array>
+		<dict>
+			<key>UUID</key>
+			<string>FE15E217-A338-4CF0-9AA4-CC18E3A05675</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Path</string>
+			<key>name</key>
+			<string>路徑</string>
+			<key>value</key>
+			<string>~/Desktop</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>DDC4E71C-1B5F-4EDB-9145-9EC804221C58</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Path</string>
+			<key>name</key>
+			<string>路徑 1</string>
+			<key>value</key>
+			<string>~/Desktop</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>8152177E-D41D-4B1C-8C7B-5EBFD7735DCA</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Path</string>
+			<key>name</key>
+			<string>路徑 2</string>
+			<key>value</key>
+			<string>~/Desktop</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>8A98D5CC-81D5-4D95-B5B9-4645550B8308</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>儲存空間</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>080365BC-5A75-49F0-9533-29725293C1ED</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Path</string>
+			<key>name</key>
+			<string>路徑 3</string>
+			<key>value</key>
+			<string>~/Desktop</string>
+		</dict>
+	</array>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>applicationBundleIDsByPath</key>
+		<dict/>
+		<key>applicationPaths</key>
+		<array/>
+		<key>inputTypeIdentifier</key>
+		<string>com.apple.Automator.fileSystemObject</string>
+		<key>outputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>presentationMode</key>
+		<integer>15</integer>
+		<key>processesInput</key>
+		<integer>0</integer>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.fileSystemObject</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>systemImageName</key>
+		<string>NSActionTemplate</string>
+		<key>useAutomaticInputType</key>
+		<integer>0</integer>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
