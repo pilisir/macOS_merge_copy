@@ -33,7 +33,7 @@ There are two way to create the services.
 
 ## Recommend Setting Hot Key
 * You can assign shortcut key for the service via Keyboard in System Preferences to make more easily.
-* Recommend **[Control] + [Command] + [m]**, meaning as **Merge**.
+* Recommend **[Control] + [Command] + [M]**, meaning as **Merge**.
 * [Tutorial](https://apple.stackexchange.com/questions/43998/how-do-i-assign-a-keyboard-shortcut-to-a-service-in-os-x)
 
 ## FYI
