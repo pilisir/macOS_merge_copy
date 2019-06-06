@@ -1,7 +1,7 @@
 # macOS merge copy service
 
 Leave away drag and drop with [option] key and say Goodbye to the "Replace".
-Do Real Merge with simple services on macOS Finder.
+Do Real Merge with simple services on macOS Finder, just like Windows / Linux.
 
 [中文版](https://github.com/pilisir/macOS_merge_copy/wiki/%E4%B8%AD%E6%96%87%E7%89%88-README)
 
