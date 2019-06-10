@@ -9,7 +9,7 @@ Do Real Merge with a simple service on macOS Finder, just like Windows / Linux.
 * Copy selected files or folders to a target folder and append as children if not existing or overwrite otherwise. 
 ## Install
 There are two way to create the services.
-##### Way 1: Copy and Paste
+##### Way 1: Copy and Paste (If you run into a problem about encoding of workflow file while trying this way, please try Way 2 instead.)
 1. Directly download this project and uncompress it.
 2. Move the service file to the local service folder. You can easily copy *merge copy.workflow* under directory __*./dist/Library/Services/*__ of this project to your local __*$USER/Library/Services/*__ directory.  (Please set your Finder eanble to see hidden directories via shortcut key **[Shift] + [Command] + [.]**  first.)
 3. Done !
