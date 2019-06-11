@@ -1,4 +1,4 @@
-# Version 1.0
+# Version 1.1
 # Copyright (c) 2019 pilisir.tw@gmail.com
 # Under MIT Licesne, please go to "https://en.wikipedia.org/wiki/MIT_License" to check license terms.
 
@@ -37,12 +37,12 @@ if [[ ${targetFolder: -1} == "/" && ${targetFolder} != "/" ]]; then
 	targetFolder=\""${targetFolder%?}"\"
 fi
 
-for eachItemPath in "$@"
+while read -r eachItemPath;
 do
 	if [[ $targetFolder == *"$eachItemPath"* || $targetFolder == "${eachItemPath%/*}" ]]; then
 		exit
 	fi
-	eachItemPathEscape=$(escapePath $eachItemPath)
+	eachItemPathEscape=$(escapePath "$eachItemPath")
 	itemsPathArray+=($eachItemPathEscape)
 done
 

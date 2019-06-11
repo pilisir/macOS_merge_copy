@@ -128,7 +128,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string># Version 1.0
+					<string># Version 1.1
 # Copyright (c) 2019 pilisir.tw@gmail.com
 # Under MIT Licesne, please go to "https://en.wikipedia.org/wiki/MIT_License" to check license terms.
 
@@ -167,12 +167,12 @@ if [[ ${targetFolder: -1} == "/" &amp;&amp; ${targetFolder} != "/" ]]; then
 	targetFolder=\""${targetFolder%?}"\"
 fi
 
-for eachItemPath in "$@"
+while read -r eachItemPath;
 do
 	if [[ $targetFolder == *"$eachItemPath"* || $targetFolder == "${eachItemPath%/*}" ]]; then
 		exit
 	fi
-	eachItemPathEscape=$(escapePath $eachItemPath)
+	eachItemPathEscape=$(escapePath "$eachItemPath")
 	itemsPathArray+=($eachItemPathEscape)
 done
 
@@ -225,7 +225,7 @@ itemsPathArray+=($eachItemPathEscape)
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>shell</key>
 					<string>/bin/bash</string>
 					<key>source</key>
@@ -334,7 +334,7 @@ itemsPathArray+=($eachItemPathEscape)
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>452.750000:370.000000</string>
+				<string>452.750000:550.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -344,7 +344,7 @@ itemsPathArray+=($eachItemPathEscape)
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>62415F9C-FE6C-4FE2-8089-50C74E71424E</key>
+		<key>A10FB79C-61EA-472C-94F5-4217C93CCF6B</key>
 		<dict>
 			<key>from</key>
 			<string>B917FF92-361F-44B8-A545-EF0FD10F1E7B - B917FF92-361F-44B8-A545-EF0FD10F1E7B</string>

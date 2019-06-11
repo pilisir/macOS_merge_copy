@@ -18,7 +18,7 @@ There are two way to create the services.
 2. Press **[Command] + [N]** to new a document which type is *Service*.
 3. Select __*Action > Library > Files & Folders > Get Selected Finder Items*__ and drag it to the right side as Step One.
 4. Select __*Action > Library > Utillities > Run Shell Script*__ and drag it to the right side as Step Two.
-5. Drop down **Pass input** of Step Two and select the **as arguments**.
+5. Drop down **Pass input** of Step Two and select the **to stdin**.
 6. Copy content text of file from this project, __*./src/merge_copy.sh*__, paste it as the Step Two shell content text.
 7. Look up the top, drop down **Service receives selected** and select **files or folders**.
 8. Press **[Command] + [S]** to save this service with specified name "**Merge Copy**" (or any custom name yourself). 
