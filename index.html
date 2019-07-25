@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>macOS merge copy</title>
+
+    <link rel="stylesheet" href="pages/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="pages/css/main.min.css">
+
+    <script src="pages/js/dom-i18n.min/dom-i18n.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var i18n = window.domI18n({
+                selector: '[data-translatable]',
+                languages: ['en', 'zh-TW'],
+                defaultLanguage: 'en'
+            });
+            var userLang = navigator.language || navigator.userLanguage;
+            i18n.changeLanguage(userLang == 'zh-TW' || userLang == 'zh-CN' ? 'zh-TW' : 'en');
+        });
+    </script>
+</head>
+<body>
+    <div class="banner">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-md">
+                    <div class="title">
+                        <div>macOS</div>      
+                        <div>Merge Copy</div>
+                    </div>
+                    <div class="description">
+                        <div data-translatable>
+                            <span>Do Real Merge and Copy with a simple service on macOS Finder, just like Windows or Linux.</span>
+                            <span>讓 macOS 在複製貼上時，做真正的資料合併，就像 Windows 和 Linux 一樣。</span>
+                        </div>
+                    </div>
+                    <div class="row bottom">
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-light" onclick="location.href='https://github.com/pilisir/macOS_merge_copy/releases/latest/download/macOS_merge_copy.zip'">
+                                <span data-translatable>
+                                    <span>Download</span>
+                                    <span>立即下載</span>
+                                </span>
+                            </button>
+                            <span class="free align-middle">
+                                <span data-translatable>
+                                    <span>Free</span>
+                                    <span>完全免費</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col d-md-none">
+                            <div class="icon text-center">
+                                <img src="pages/image/icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-none d-md-block">
+                    <div class="icon text-right">
+                        <img class="img-fluid" src="pages/image/icon.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content h-100">
+        <div class="row top text-center">
+                <div class="col-12">
+                    <div class="header-text">
+                        <div data-translatable>
+                            <div>    
+                                Do you have such experience <br>
+                                when doing copy and paste on macOS?
+                            </div>
+                            <div>    
+                                在 macOS 上使用複製貼上整理檔案時<br>
+                                你是否也有以下的經驗呢？
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row intro align-items-center h-100">
+            <div class="col-12 col-md-6 order-md-7 ">
+                <div class="header-text text-center">
+                    <div data-translatable>
+                        <div>
+                            Disaster
+                        </div>
+                        <div>
+                            世紀災難
+                        </div>
+                    </div>
+                    <div data-translatable>
+                        <div>
+                            Missing files after replace
+                        </div>
+                        <div>
+                            按下取代後，檔案消失了
+                        </div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <div data-translatable>
+                        <div>
+                            Copy a folder and paste it directly to Replace another 
+                            folder with same name, the destination of folder would 
+                            just seem to be removed all child folders and files first, 
+                            then paste rest from source folder. It actions like in duplicate.<br/>
+                            Cool, but useless and ruin everything.
+                        </div>
+                        <div>
+                            複製並貼上相同名稱的資料夾，若選擇取代，則你的目的資料夾會和來源資料夾長的一模一樣，
+                            就好像目地資料夾先被刪掉，然後在把來源資料夾複製過來。<br/>
+                            這很酷，但一點用處都沒有，而且毀了一切。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <div class="pic">
+                        <div class="window h-100">
+                            <div class="row">
+                                <div class="col-12 d-flex window-dot-wrap">
+                                    <div class="window-dot rounded-circle"></div>
+                                    <div class="window-dot rounded-circle mini"></div>
+                                    <div class="window-dot rounded-circle"></div>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <div class="row ">
+                                    <div class="col-12 d-flex replace-button-wrap">
+                                        <div class="replace-button border-gray"></div>
+                                        <div class="replace-button d-flex justify-content-center align-items-center">
+                                            <div data-translatable>
+                                                <div>
+                                                    Replace
+                                                </div>
+                                                <div>
+                                                    取代
+                                                </div>
+                                            </div>
+                                            <div class="circle-ripple"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row intro align-items-center h-100">
+            <div class="col-12 col-md-6">
+                <div class="header-text text-center">
+                    <div data-translatable>
+                        <div>
+                            Exhausted
+                        </div>
+                        <div>
+                            精疲力盡
+                        </div>
+                    </div>
+                    <div data-translatable>
+                        <div>
+                            Dragging with option
+                        </div>
+                        <div>
+                            按著 option 並拖拉
+                        </div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <div data-translatable>
+                        <div>
+                            Actually, if folder wants to be merged with another. The right way to do it is dragging souce folder to the destination and hold option key before you release dragging. It can be really frustrating and making mistake easily if you repeat again and again.<br/>
+                            Especially, do it with touchpad. No Kidding!
+                        </div>
+                        <div>
+                            事實上，若你想要在複製貼上時，將兩個相同名稱資料夾底下的檔案做合併，你可以拖拉來源資料夾，到目的資料夾上，然後在你放開拖拉前，先按著 option 即可。
+                            要大量重複相同動作，卻沒辦法使用熱鍵來完成，這令人十分沮喪，而且拖拉的過程也容易出錯。<br/>
+                            不開玩笑！尤其是當你使用觸控板時。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="pic">
+                    <div class="dragging h-100">
+                        <div class="row">
+                            <div class="col-12 d-flex dragging-button-wrap">
+                                <div class="dragging-button-small border-gray"></div>
+                                <div class="dragging-button-small d-flex justify-content-center align-items-center">
+                                    <div class="circle-ripple"></div>
+                                    <div class="text-right d-flex flex-column option">
+                                        <div class="icon">⌥</div>
+                                        <div class="flex-grow-1 d-flex justify-content-end align-items-end">option</div>
+                                    </div>
+                                </div>
+                                <div class="dragging-button-middle border-gray"></div>
+                                <div class="dragging-button-large border-gray flex-fill"></div>
+                                <div class="dragging-button-middle border-gray"></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="touchpad d-flex justify-content-center align-items-center">
+                                    <div class="circle-ripple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row intro align-items-center h-100">
+            <div class="col-12 col-md-6 order-md-7">
+                <div class="header-text text-center">
+                    <div data-translatable>
+                        <div>
+                            Weird
+                        </div>
+                        <div>
+                            毫無頭緒
+                        </div>
+                    </div>
+                    <div data-translatable>
+                        <div>
+                            Something goes wrong
+                        </div>
+                        <div>
+                            有點不對勁
+                        </div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <div data-translatable>
+                        <div>
+                            You may find out some file in destination of folder is still old one, but rest of files are overwrited correctly.
+                            The rule is depended on date time of file. The new one will keep and not be overwrited, but you can not detect it until something finally goes wrong.<br/>
+                            Why? We can simply do it like Windows or Linux, right?
+                        </div>
+                        <div>
+                            拖拉合併時，日期比較新的檔案，就被忽略而不覆蓋？這是個難以被注意的規則，直到你的作品出錯了，你甚至還無法意識到是這個原因造成的。<br/>
+                            為什麼需要如此特殊的行為呢？我們可以像 Windows 和 Linux 一樣簡單，不是嗎？
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <div class="pic">
+                        <div class="window h-100">
+                            <div class="row">
+                                <div class="col-12 d-flex window-dot-wrap">
+                                    <div class="window-dot rounded-circle quit"></div>
+                                    <div class="window-dot rounded-circle mini"></div>
+                                    <div class="window-dot rounded-circle full"></div>
+                                </div>
+                            </div>
+                            <div class="finder">
+                                <div class="odd">
+                                    <div class="row h-100 align-items-center d-flex justify-content-center">
+                                        <div class="col">
+                                            <span data-translatable>
+                                                <span>File_X</span>
+                                                <span>檔案X</span>
+                                            </span>
+                                        </div>
+                                        <div class="col text-right success">
+                                            <span data-translatable>
+                                                <span>Overwritten</span>
+                                                <span>覆蓋</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="even">
+                                    <div class="row h-100 align-items-center d-flex justify-content-center">
+                                        <div class="col">
+                                            <span data-translatable>
+                                                <span>File_Y</span>
+                                                <span>檔案Y</span>
+                                            </span>
+                                        </div>
+                                        <div class="col text-right success">
+                                            <span data-translatable>
+                                                <span>Overwritten</span>
+                                                <span>覆蓋</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="odd">
+                                    <div class="row h-100 align-items-center d-flex justify-content-center">
+                                        <div class="col">
+                                            <span data-translatable>
+                                                <span>File_Z</span>
+                                                <span>檔案Z</span>
+                                            </span>
+                                        </div>
+                                        <div class="col text-right fail">
+                                            <span data-translatable>
+                                                <span>Ignored</span>
+                                                <span>忽略</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bottom text-center">
+            <div class="col-12">
+                <div class="header-text">
+                    <div data-translatable>
+                        <div>
+                            No need to worry anymore !
+                        </div>
+                        <div>
+                            不需要再擔心這些了！
+                        </div>
+                    </div>
+                    <div data-translatable>
+                        <div>
+                            Here is an Automator service you can try 
+                        </div>
+                        <div>
+                            你可以試試看這個 Automator 服務
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 download d-flex justify-content-center">
+                <button type="button" class="btn btn-dark" onclick="location.href='https://github.com/pilisir/macOS_merge_copy'">
+                    <span data-translatable>
+                        <span>View GitHub</span>
+                        <span>瀏覽 GitHub</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-dark" onclick="location.href='https://github.com/pilisir/macOS_merge_copy/releases/latest/download/macOS_merge_copy.zip'">
+                    <span data-translatable>
+                        <span>Download</span>
+                        <span>立即下載</span>
+                    </span>
+                </button>
+            </div>
+            <div class="col-12">
+                <div class="header-text">
+                    <div data-translatable>
+                        <div>
+                            Ｏpen source for free
+                        </div>
+                        <div>
+                            開源專案，完全免費
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer py-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12 contact d-flex justify-content-center">
+                    <div class="bg-black rounded-circle mx-2">
+                        <a href="https://github.com/pilisir">
+                            <img class="p-1" src="pages/image/fontawesome/github-brands.svg">
+                        </a>
+                    </div>
+                    <div class="bg-black rounded-circle mx-2">
+                        <a href="https://medium.com/@pilisir.tw">
+                            <img class="p-1" src="pages/image/fontawesome/medium-m-brands.svg">
+                        </a>
+                    </div>
+                    <div class="bg-black rounded-circle mx-2">
+                        <a href="mailto:pilisir.tw@gmail.com">
+                            <img class="p-1" src="pages/image/fontawesome/envelope-regular.svg">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 mt-2 copyright">
+                    <div>
+                        Power by pilisir.tw@gmail.com
+                    </div>
+                    <div>
+                        Merge icon made by 
+                        <a href="https://www.flaticon.com/authors/turkkub">Freepik</a> 
+                        from 
+                        <a href="https://www.flaticon.com">www.flaticon.com</a>
+                    </div>
+                    <div>
+                        Rest of icon made by 
+                        <a href="https://fontawesome.com/license">Fontawesome</a> 
+                        from 
+                        <a href="https://www.flaticon.com">fontawesome.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
