@@ -34,7 +34,7 @@ body {
     position:absolute;
     top:0;
     left:0;
-    background:#1B2030 url(/pages/image/banner.jpg) no-repeat;
+    background:#1B2030 url(./../../pages/image/banner.jpg) no-repeat;
     background-size:cover;
     animation: grow 60s  linear 10ms infinite;
     transition:all 0.2s ease-in-out;
