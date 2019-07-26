@@ -43,10 +43,12 @@ There are two way to create the services.
 ## License
 MIT License
 
+## Encourage
+* Star this project if you like !
+* Or you can donate me via
+[Donate me via PayPal](https://www.paypal.me/pilisir/0.99usd)\
+[Donate me via OPay(歐付寶)](https://p.opay.tw/unUun)
+
 ## Reference
 * https://grahamrpugh.com/2017/01/07/application-to-run-shell-commands-with-admin-rights.html
 * https://stackoverflow.com/questions/39932522/applescript-how-to-get-full-path-of-the-current-finder-window-open
-
-## Donate
-[Donate me via PayPal](https://www.paypal.me/pilisir/0.99usd)\
-[Donate me via OPay(歐付寶)](https://p.opay.tw/unUun)
