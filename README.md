@@ -26,7 +26,7 @@ There are two way to create the services.
 
 ## Usage
 1. Select files or directories in Finder, open conetxt menu and select Service > **Merge Copy**.
-2. Select target folder from second Finder dialog.
+2. Select target folder from second Finder dialog, your copying files and folder would paste and merge under this selected folder.
 3. Provide password if files or folders require premissions.
 4. That's all !
 ![context menu](https://github.com/pilisir/macOS_merge_copy/blob/master/doc/image/contextmenu.png)
