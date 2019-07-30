@@ -31,8 +31,8 @@ There are two way to create the services.
 4. That's all !
 ![context menu](https://github.com/pilisir/macOS_merge_copy/blob/master/doc/image/contextmenu.png)
 
-## Recommend Setting Hot Key
-* You can assign shortcut key for the service via Keyboard in System Preferences to make more easily.
+## Recommend to set Shortcut Key
+* You can assign shortcut key for the service via Keyboard in System Preferences to make things more easily.
 * Recommend **[Control] + [Command] + [M]**, meaning as **Merge**.
 * [Tutorial](https://apple.stackexchange.com/questions/43998/how-do-i-assign-a-keyboard-shortcut-to-a-service-in-os-x)
 
