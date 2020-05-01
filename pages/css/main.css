@@ -12,9 +12,9 @@ body {
     justify-content: center;
     align-items: flex-start;
     align-content: flex-start;
-    height:50vw;
+    height:40vw;
     min-height:300px;
-    max-height:550px;
+    /* max-height:550px; */
     min-width:300px;
 }
 .banner:after{
@@ -427,6 +427,69 @@ body {
         }
         100% {
             box-shadow: 0 0 0 1vw rgba(169, 253, 205, 0.2), 0 0 0 1.5vw rgba(169, 253, 205, 0.2), 0 0 0 2.5vw rgba(169, 253, 205, 0.2), 0 0 0 5vw rgba(169, 253, 205, 0);
+        }
+    }
+
+    @media (min-width: 1200px) { 
+        .header-text{
+            font-size: 30px;
+
+        }
+
+        .window .replace-button {
+            font-size: 18px;
+            max-width: 118px;
+            max-height: 40px;
+        }
+
+        .window {
+            max-width: 397px;
+        }
+
+        .window,
+        .content .intro,
+        .pic {
+            max-height: 237px;
+        }
+
+        .dragging-button-small .option {
+            font-size: 12px;
+        }
+
+        .dragging-button-small {
+            max-width: 42px;
+            min-width: 42px;
+        }
+
+        .dragging-button-middle {
+            max-width: 54px;
+            min-width: 54px;
+        }
+
+        .dragging-button-small,
+        .dragging-button-middle,
+        .dragging-button-large  {
+            max-height: 42px;
+        }
+
+        .touchpad {
+            margin-left: 60px;
+            max-height: 179px;
+        }
+
+        .finder .odd, .finder .even {
+            font-size: 19px;
+            max-height: 42px;
+        }
+
+        .finder {
+            margin: 36px;
+        }
+
+        .window .window-dot {
+            max-width: 15px;
+            max-height: 15px;
+            margin-right: 12px;
         }
     }
 }
